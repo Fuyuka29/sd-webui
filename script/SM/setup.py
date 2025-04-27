@@ -294,7 +294,8 @@ def webui_install(ui, which_sd):
 
     with output:
         alist = {
-            'A1111': 'https://github.com/AUTOMATIC1111/stable-diffusion-webui A1111',
+            'A1111': 'https://github.com/Haoming02/sd-webui-forge-classic',
+            'A11110': 'https://github.com/AUTOMATIC1111/stable-diffusion-webui A1111',
             'Forge': 'https://github.com/lllyasviel/stable-diffusion-webui-forge Forge',
             'ComfyUI': 'https://github.com/comfyanonymous/ComfyUI',
             'ReForge': 'https://github.com/Panchovix/stable-diffusion-webui-reForge ReForge',
