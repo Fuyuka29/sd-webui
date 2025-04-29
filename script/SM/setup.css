@@ -30,7 +30,7 @@
 }
 
 .a1111, .forge, .comfyui, .reforge,
-.swarmui, .facefusion, .sdtrainer,
+.forgeclassic, .swarmui, .facefusion, .sdtrainer,
 .button-15, .button-xl, .button-back {
   z-index: 99;
   background-color: transparent;
@@ -46,7 +46,7 @@
 }
 
 .a1111, .forge, .comfyui, .reforge,
-.swarmui, .facefusion, .sdtrainer {
+.forgeclassic, .swarmui, .facefusion, .sdtrainer {
   height: 250px;
 }
 
@@ -79,10 +79,12 @@
 .reforge {
   background-image: url('https://i.imgur.com/95Afkbg.jpg');
 }
+.forgeclassic {
+  background-image: url('https://avatars.githubusercontent.com/u/73768377?v=4');
+}
 .swarmui {
   background-image: url('https://avatars.githubusercontent.com/u/43497670?s=200&v=4');
 }
-
 .facefusion {
   background-image: url('https://i.imgur.com/1R9rDO6.png');
 }
@@ -107,7 +109,7 @@
 }
 
 .a1111:hover, .forge:hover, .comfyui:hover, .reforge:hover,
-.swarmui:hover, .facefusion:hover, .sdtrainer:hover,
+.forgeclassic:hover, .swarmui:hover, .facefusion:hover, .sdtrainer:hover,
 .button-15:hover, .button-xl:hover {
   width: 100%;
   filter: brightness(100%);
@@ -124,7 +126,7 @@
 }
 
 .a1111::after, .forge::after, .comfyui::after, .reforge::after,
-.swarmui::after, .facefusion::after, .sdtrainer::after,
+.forgeclassic::after, .swarmui::after, .facefusion::after, .sdtrainer::after,
 .button-15::after, .button-xl::after {
   font-family: 'Times New Roman', serif;
   text-align: center;
@@ -154,6 +156,10 @@
 }
 .reforge::after {
   content: 'ReForge';
+  font-size: 35px;
+}
+.forgeclassic::after {
+  content: 'ForgeClassic';
   font-size: 35px;
 }
 .swarmui::after {
