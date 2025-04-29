@@ -1,0 +1,7 @@
+--depth 1 https://github.com/Bing-su/adetailer 4-adetailer
+--depth 1 https://github.com/zanllp/sd-webui-infinite-image-browsing
+--depth 1 https://github.com/DominikDoom/a1111-sd-webui-tagcomplete
+--depth 1 https://github.com/Coyote-A/ultimate-upscale-for-automatic1111
+--depth 1 https://github.com/Mikubill/sd-webui-controlnet
+--depth 1 https://github.com/gutris1/sd-image-info
+--depth 1 https://github.com/gutris1/sd-simple-dimension-prese
