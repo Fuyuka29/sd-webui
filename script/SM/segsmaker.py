@@ -29,6 +29,7 @@ def get_args(ui):
         'Forge': ('--disable-xformers --opt-sdp-attention --cuda-stream --pin-shared-memory'),
         'ComfyUI': ('--dont-print-server --preview-method auto --use-pytorch-cross-attention'),
         'ReForge': ('--xformers --cuda-stream --pin-shared-memory'),
+        'ForgeClassic': ('--xformers --fast-fp16'),
         'FaceFusion': '',
         'SDTrainer': '',
         'SwarmUI': ('--launch_mode none')
@@ -69,6 +70,7 @@ def load_config():
         'Forge': 'Forge',
         'ComfyUI': 'ComfyUI',
         'ReForge': 'ReForge',
+        'ForgeClassic': 'ForgeClassic',
         'FaceFusion': 'Face Fusion',
         'SDTrainer': 'SD Trainer',
         'SwarmUI': 'SwarmUI'
@@ -216,7 +218,7 @@ def launching(ui, skip_comfyui_check=False):
     if cpu_cb.value:
         if ui == 'A1111':
             args += ' --use-cpu all --precision full --no-half --skip-torch-cuda-test'
-        elif ui in ['ReForge', 'Forge']:
+        elif ui in ['ReForge', 'Forge', 'ForgeClassic']:
             args += ' --always-cpu --skip-torch-cuda-test'
         elif ui == 'ComfyUI':
             args += ' --cpu'
@@ -233,7 +235,7 @@ def launching(ui, skip_comfyui_check=False):
     else:
         port = 7860
 
-    if ui in ['A1111', 'Forge', 'ReForge']:
+    if ui in ['A1111', 'Forge', 'ReForge', 'ForgeClassic']:
         args += ' --enable-insecure-extension-access --disable-console-progressbars --theme dark'
     elif ui == 'FaceFusion':
         PY = '/tmp/venv-fusion/bin/python3'
