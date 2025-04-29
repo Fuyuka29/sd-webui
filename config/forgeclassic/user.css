@@ -1,0 +1,25 @@
+#txt2img_gallery, #img2img_gallery {
+  /* Output height */
+  height: 680px;
+}
+
+#txt2img_results, #img2img_results {
+  /* Output width */
+  min-width: 50%;
+}
+
+#txt2img_gallery > .grid-wrap, #txt2img_gallery > .preview,
+#img2img_gallery > .grid-wrap, #img2img_gallery > .preview {
+  max-height: none;
+}
+
+#txt2img_extra_networks:not(div), #img2img_extra_networks:not(div) {
+  order: 1 !important;
+}
+
+#setting_show_progress_every_n_steps > div.wrap > div > label > span {
+  white-space: nowrap;
+  overflow: hidden;
+  width: 220px;
+  text-overflow: ellipsis;
+}
