@@ -36,13 +36,13 @@ iRON = os.environ
 
 def SM_Script(WEBUI):
     return [
-        f'https://github.com/gutris1/segsmaker/raw/main/script/SM/venv.py {WEBUI}',
-        f'https://github.com/gutris1/segsmaker/raw/main/script/SM/Launcher.py {WEBUI}',
-        f'https://github.com/gutris1/segsmaker/raw/main/script/SM/segsmaker.py {WEBUI}'
+        f'https://github.com/deen29/sd-webui/raw/main/script/SM/venv.py {WEBUI}',
+        f'https://github.com/deen29/sd-webui/raw/main/script/SM/Launcher.py {WEBUI}',
+        f'https://github.com/deen29/sd-webui/raw/main/script/SM/segsmaker.py {WEBUI}'
     ]
 
 def CN_Script(WEBUI):
-    return f'https://github.com/gutris1/segsmaker/raw/main/script/controlnet.py {WEBUI}/asd'
+    return f'https://github.com/deen29/sd-webui/raw/main/script/controlnet.py {WEBUI}/asd'
 
 def Load_CSS():
     display(HTML(f'<style>{CSS.read_text()}</style>'))
@@ -185,6 +185,18 @@ def sym_link(U, M):
             ]
         },
 
+         'ForgeClassic': {
+            'sym': [
+                f"rm -rf {M / 'Stable-diffusion/tmp_ckpt'} {M / 'Lora/tmp_lora'} {M / 'ControlNet'}"
+            ],
+            'links': [
+                (TMP, HOME / 'tmp'),
+                (TMP / 'ckpt', M / 'Stable-diffusion/tmp_ckpt'),
+                (TMP / 'lora', M / 'Lora/tmp_lora'),
+                (TMP / 'controlnet', M / 'ControlNet')
+            ]
+        },
+
         'SwarmUI': {
             'sym': [
                 f"rm -rf {M / 'Stable-Diffusion/tmp_ckpt'} {M / 'Lora/tmp_lora'} {M / 'controlnet'}",
@@ -204,7 +216,7 @@ def sym_link(U, M):
     cfg = configs.get(U)
     SyS(f"rm -rf {HOME / 'tmp'} {HOME / '.cache'}/*")
     [SyS(f'{cmd}') for cmd in cfg['sym']]
-    if U in ['A1111', 'Forge', 'ReForge']: [(M / d).mkdir(parents=True, exist_ok=True) for d in ['Lora', 'ESRGAN']]
+    if U in ['A1111', 'Forge', 'ReForge', 'ForgeClassic']: [(M / d).mkdir(parents=True, exist_ok=True) for d in ['Lora', 'ESRGAN']]
     [SyS(f'ln -s {src} {tg}') for src, tg in cfg['links']]
 
 def webui_req(U, W, M):
@@ -212,7 +224,7 @@ def webui_req(U, W, M):
     tmp_cleaning(vnv)
     CD(W)
 
-    if U in ['A1111', 'Forge', 'ComfyUI', 'ReForge']:
+    if U in ['A1111', 'Forge', 'ComfyUI', 'ReForge', 'ForgeClassic']:
         pull(f'https://github.com/gutris1/segsmaker {U.lower()} {W}')
     elif U == 'SwarmUI':
         M.mkdir(parents=True, exist_ok=True)
@@ -294,11 +306,11 @@ def webui_install(ui, which_sd):
 
     with output:
         alist = {
-            'A1111': 'https://github.com/Haoming02/sd-webui-forge-classic A1111',
-            'A11110': 'https://github.com/AUTOMATIC1111/stable-diffusion-webui A1111',
+            'A1111': 'https://github.com/AUTOMATIC1111/stable-diffusion-webui A1111',
             'Forge': 'https://github.com/lllyasviel/stable-diffusion-webui-forge Forge',
             'ComfyUI': 'https://github.com/comfyanonymous/ComfyUI',
             'ReForge': 'https://github.com/Panchovix/stable-diffusion-webui-reForge ReForge',
+            'ForgeClassic': 'https://github.com/Haoming02/sd-webui-forge-classic ForgeClassic',
             'SwarmUI': 'https://github.com/mcmonkeyprojects/SwarmUI'
         }
 
@@ -388,6 +400,9 @@ def oppai(btn, sd=None):
                 elif ui in ['Forge', 'ReForge', 'SDTrainer']:
                     SyS('git pull origin main')
 
+                elif ui in ['ForgeClassic']:
+                    SyS('git pull origin classic')
+
                 x = SM_Script(WEBUI)
 
                 if ui and ui not in ['SDTrainer', 'FaceFusion']:
@@ -428,7 +443,7 @@ for button, btn in zip(buttons1, row1):
     button.add_class(btn.lower())
     button.on_click(lambda x, btn=btn: select_webui(btn))
 
-row2 = ['SwarmUI', 'FaceFusion', 'SDTrainer']
+row2 = ['ForgeClassic', 'SwarmUI', 'FaceFusion', 'SDTrainer']
 buttons2 = [widgets.Button(description='') for btn in row2]
 for button, btn in zip(buttons2, row2):
     button.add_class(btn.lower())
@@ -465,9 +480,9 @@ def go_back(b):
 
 def Segsmaker_Setup_Widgets():
     for cmd in [
-        f'curl -sLo {CSS} https://github.com/gutris1/segsmaker/raw/main/script/SM/setup.css',
-        f'curl -sLo {IMG} https://github.com/gutris1/segsmaker/raw/main/script/loading.png',
-        f'curl -sLo {MRK} https://github.com/gutris1/segsmaker/raw/main/script/marking.py'
+        f'curl -sLo {CSS} https://github.com/deen29/sd-webui/raw/main/script/SM/setup.css',
+        f'curl -sLo {IMG} https://github.com/deen29/sd-webui/raw/main/script/loading.png',
+        f'curl -sLo {MRK} https://github.com/deen29/sd-webui/raw/main/script/marking.py'
     ]: SyS(cmd)
 
     Load_CSS()
