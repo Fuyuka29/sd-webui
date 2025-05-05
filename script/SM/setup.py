@@ -225,7 +225,7 @@ def webui_req(U, W, M):
     CD(W)
 
     if U in ['A1111', 'Forge', 'ComfyUI', 'ReForge', 'ForgeClassic']:
-        pull(f'https://github.com/deen29/sd-webui {U.lower()} {W}')
+        pull(f'https://github.com/gutris1/segsmaker {U.lower()} {W}')
     elif U == 'SwarmUI':
         M.mkdir(parents=True, exist_ok=True)
         for sub in ['Stable-Diffusion', 'Lora', 'Embeddings', 'VAE', 'upscale_models']:
