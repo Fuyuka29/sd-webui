@@ -400,7 +400,7 @@ def oppai(btn, sd=None):
                 elif ui in ['Forge', 'ReForge', 'SDTrainer']:
                     SyS('git pull origin main')
 
-                else ui in ['ForgeClassic']:
+                if ui in ['ForgeClassic']:
                     SyS('git pull origin classic')
 
                 x = SM_Script(WEBUI)
